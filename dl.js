@@ -193,7 +193,7 @@ function log_status(chunks) {
  */ 
 function verify_etag_nginx(path, etag_val) {
   const stats = fs.statSync(path);
-  return etag_val.replaceAll("\"", "").split("-")[1] === stats.size.toString(16);
+  return etag_val.replace(/"/g, "").split("-")[1] === stats.size.toString(16);
 }
 
 /**
